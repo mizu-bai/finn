@@ -9,11 +9,19 @@ subroutine fundamental
     real(kind=8), allocatable :: frtest(:, :)
 
 ! degree of the fundamental invariants to be calculated
-    read (*, *); read (*, *) degree, i
+    ! read (*, *); read (*, *) degree, i
+    print *, "degree"
+    read (*, *) degree
+    write (601, *) "degree"
+    write (601, *) degree
+    print *, "number of exit point"
+    read (*, *) i
     write (601, '("degree and number of exit point:")'); write (601, '((i2,1x,i2))') degree, i
     allocate (nexit(0:i))
     nexit(0) = i
-    read (*, *); read (*, *) nexit(1:i)
+    ! read (*, *); read (*, *) nexit(1:i)
+    print *, "exit index of FI"
+    read (*, *) nexit(1:i)
     write (601, '("exit index of FI:")')
     do i = 1, nexit(0)
         write (601, '(i4\)') nexit(i)
@@ -36,14 +44,14 @@ subroutine fundamental
     open (711, file='dat.cpolys', status='replace')
     open (717, file='dat.latex', status='replace')
 !-----------------
-    do i = 1, 10
-        call sym_poly(i, np)
-        write (*, *) "*", np
-        do j = 1, np
-            call write_poly(monid(j), mons(1, 1:monid(j) - 1, j), mons(2, 1:monid(j) - 1, j), j)
-        end do
-    end do
-    stop
+    ! do i = 1, 10
+    !     call sym_poly(i, np)
+    !     write (*, *) "*", np
+    !     do j = 1, np
+    !         call write_poly(monid(j), mons(1, 1:monid(j) - 1, j), mons(2, 1:monid(j) - 1, j), j)
+    !     end do
+    ! end do
+    ! stop
 !-----------------
     do i = 1, degree
         call sym_poly(i, np)

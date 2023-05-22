@@ -9,11 +9,15 @@ subroutine rey_molecule
 ! calculate the reynolds operator for the molecular system
 ! AxBy...Mp, the corresponding group is the direct product
 ! of symmetric group SxSy...Sp
-    read (*, *); read (*, *) natom
+    ! read (*, *); read (*, *) natom
+    print *, "natom"
+    read (*, *) natom
     write (601, '("number of atoms:")'); write (601, '(i2)') natom
     allocate (label(natom), id(natom), idx(natom), nperm(natom))
     allocate (idr(natom*(natom - 1)/2, 2))
-    read (*, *); read (*, *) label(1:natom) ! label of atoms, as A A A B B C ...
+    ! read (*, *); read (*, *) label(1:natom) ! label of atoms, as A A A B B C ...
+    print *, "label of atoms, as A A A B B C ..."
+    read (*, *) label(1:natom)
     write (601, '("labels of atoms:")')
     do i = 1, natom
         write (601, '(a2\)') adjustl(label(i))
